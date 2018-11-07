@@ -3,26 +3,18 @@
 
 #include <windows.h>
 
-#define VID 0x0483
-#define PID 0x5750
-
-typedef enum BUTTON
-{
-	LEFT = 1,
-	RIGHT,
-	MEDDLE
-};
-
 BOOL InitDevice();
 
 //¼üÊó²Ù×÷º¯Êý
-BOOL KeyDown(UCHAR vKey);
-BOOL KeyUp(UCHAR vKey);
-BOOL KeyPress(UCHAR vKey);
-BOOL MouseUp(BUTTON btn);
-BOOL MouseDown(BUTTON btn);
-BOOL MouseClick(BUTTON btn);
-BOOL MouseMove(int x, int y);
-BOOL MouseWheel(int vol);
+BOOL KeyDown(LPCSTR key);
+BOOL KeyUp(LPCSTR key);
+BOOL KeyPress(LPCSTR key, int count);
+BOOL LeftUp();
+BOOL LeftDown();
+BOOL LeftClick(int count);
+BOOL RightUp();
+BOOL RightDown();
+BOOL RightClick(int count);
+BOOL WheelsMove(int y);
 
 #endif

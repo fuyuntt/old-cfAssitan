@@ -129,24 +129,24 @@ int _tmain(int argc, _TCHAR* argv[])
 				{
 					StickingPoint();
 				}
-				MouseClick(LEFT);
+				LeftClick(1);
 				Sleep(150);
-				MouseWheel(-1);
+				WheelsMove(-1);
 				Sleep(200);
 				if(!(GetKeyState(VK_CAPITAL) & 0x01))
 				{
-					MouseWheel(1);
+					WheelsMove(1);
 				}
 				Sleep(500);
 			}
 			else if (GetKeyState(VK_LBUTTON) & 0x8000)
 			{
 				Sleep(150);
-				MouseWheel(-1);
+				WheelsMove(-1);
 				Sleep(200);
 				if(!(GetKeyState(VK_CAPITAL) & 0x01))
 				{
-					MouseWheel(1);
+					WheelsMove(1);
 				}
 				Sleep(500);
 			}
@@ -156,7 +156,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			if(isInRange() && isZoom())
 			{
-				MouseClick(LEFT);
+				LeftClick(1);
 				Sleep(50);
 			}
 		}
@@ -165,12 +165,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			if (!isButtonDown && isInRange() && (GetKeyState(VK_RBUTTON) & 0x8000))
 			{
-				MouseDown(LEFT);
+				LeftDown();
 				isButtonDown = true;
 			}
 			if(isButtonDown && !isInRange())
 			{
-				MouseUp(LEFT);
+				LeftUp();
 				isButtonDown = false;
 				Sleep(180);
 			}
@@ -181,7 +181,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			if(isInRange() && (GetKeyState(VK_RBUTTON) & 0x8000))
 			{
-				MouseClick(LEFT);
+				LeftClick(1);
 				if(GetTickCount() - preTime < 250)
 				{
 					i++;
@@ -205,7 +205,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			if(isInRange() && (GetKeyState(VK_RBUTTON) & 0x8000))
 			{
-				MouseClick(LEFT);
+				LeftClick(1);
 				Sleep(30);
 				if(!isBingo())
 				{
@@ -223,14 +223,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			if(isInRange())
 			{
-				MouseClick(LEFT);
+				LeftClick(1);
 				isFull = false;
 				preTime = GetTickCount();
 				Sleep(100);
 			}
 			if(GetTickCount() - preTime > 1000 && isFull == false)
 			{
-				KeyPress('R');
+				KeyPress("r", 1);
 				isFull = true;
 			}
 		}
@@ -370,22 +370,22 @@ void jump()
 			}
 			if(GetKeyState(VK_MENU) & 0x8000)
 			{
-				KeyPress(VK_SPACE);
+				KeyPress("Space", 1);
 				Sleep(300);
-				KeyDown(VK_LCONTROL);
+				KeyDown("Ctrl");
 				Sleep(310);
 				while(GetKeyState(VK_MENU) & 0x8000)
 				{
-					KeyPress(VK_SPACE);
+					KeyPress("Space", 1);
 					Sleep(600);
 				}
-				KeyUp(VK_LCONTROL);
+				KeyUp("Ctrl");
 			}
 			else
 			{
-				KeyPress(VK_SPACE);
+				KeyPress("Space", 1);
 				Sleep(580);
-				KeyPress(VK_SPACE);
+				KeyPress("Space", 1);
 			}
 		}
 		Sleep(20);
